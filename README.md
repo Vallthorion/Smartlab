@@ -1,259 +1,334 @@
-Smart Lab
-Sistem Peminjaman dan Pengelolaan Kunci Laboratorium Berbasis RFID dan
-Website
 
-Smart Lab adalah proyek sistem peminjaman kunci laboratorium yang
-mengintegrasikan teknologi RFID, ESP32, kunci solenoid elektrik,
-dan website. Sistem ini dirancang untuk membantu pengurus laboratorium
-mencatat aktivitas peminjaman dan pengembalian kunci secara digital,
-memantau kondisi loker, serta mengetahui siapa yang sedang menggunakan
-kunci laboratorium.
+<div align="center">
 
-Proyek ini dikembangkan sebagai prototype untuk lingkungan laboratorium
-Teknik Komputer dan Jaringan (TKJ).
-Daftar Isi
-- Latar Belakang
-- Tujuan
-- Fitur Utama
-- Gambaran Sistem
-- Alur Peminjaman dan
-  Pengembalian
-- Peran Pengguna
-- Perangkat Keras
-- Teknologi yang Digunakan
-- Gambaran Arsitektur
-- Data yang Dikelola
-- Keamanan dan Penanganan Darurat
-- Rencana Pengembangan
-- Catatan Prototype
-Latar Belakang
-Peminjaman kunci laboratorium yang dilakukan secara manual dapat
-menimbulkan beberapa kendala, seperti pencatatan peminjaman yang tidak
-konsisten, kesulitan mengetahui pihak yang sedang memegang kunci,
-keterlambatan pengembalian, serta kurangnya informasi mengenai
-ketersediaan laboratorium.
+# SMART LAB
 
-Smart Lab dikembangkan untuk membantu mengatasi kendala tersebut melalui
-proses identifikasi kartu RFID dan pencatatan terpusat pada website.
-Dengan sistem ini, aktivitas peminjaman dan pengembalian dapat direkam
-secara digital sehingga pengurus laboratorium lebih mudah melakukan
-pemantauan.
-Tujuan
-1. Mendigitalisasi proses peminjaman dan pengembalian kunci
-   laboratorium.
-2. Mengidentifikasi pengguna menggunakan kartu RFID.
-3. Mengontrol akses loker kunci menggunakan solenoid elektrik.
-4. Menampilkan status ketersediaan dan penggunaan kunci melalui
-   website.
-5. Menyimpan riwayat transaksi agar dapat diperiksa oleh pengurus
-   laboratorium.
-Fitur Utama
-- Identifikasi RFID: pengguna melakukan pemindaian kartu RFID yang
-  telah terdaftar.
-- Akses loker: sistem memproses kartu dan mengaktifkan solenoid
-  pada loker yang sesuai apabila transaksi diizinkan.
-- Peminjaman dan pengembalian: kartu yang sama digunakan untuk
-  mencatat peminjaman dan pengembalian pada loker asal.
-- Monitoring website: menampilkan status setiap loker, informasi
-  pengguna yang sedang meminjam, dan riwayat transaksi.
-- Pengelolaan data: pengurus dapat mengelola data pengguna,
-  loker/laboratorium, dan riwayat peminjaman sesuai hak akses.
-- Pencatatan otomatis: data transaksi dikirim dari ESP32 ke server
-  untuk disimpan dalam basis data.
-Gambaran Sistem
-Prototype Smart Lab menggunakan dua loker yang mewakili dua
-laboratorium:
+### RFID-Based Laboratory Key Management System
 
-  Loker   Laboratorium   Kunci
-  1       LAB TKJ 1      1 kunci
-2       LAB TKJ 2      1 kunci
+**Sistem Peminjaman dan Pengelolaan Kunci Laboratorium Berbasis RFID dan Website**
 
-Setiap loker memiliki satu RFID reader dan satu solenoid. Pengguna
-mendatangi loker laboratorium yang dituju dan menempelkan kartu RFID
-pada reader di loker tersebut. Pengguna tidak perlu memilih laboratorium
-melalui website atau menu perangkat karena lokasi reader sudah
-menunjukkan loker yang akan digunakan.
+<p>
+  <img src="https://img.shields.io/badge/PROJECT-SMART%20LAB-2563EB?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/CATEGORY-IOT-0891B2?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/STATUS-PROTOTYPE-F59E0B?style=for-the-badge" />
+</p>
 
-Prototype dirancang untuk melayani 9 siswa dan 3 pengurus
-laboratorium. Seluruh pengguna menggunakan kartu RFID yang telah
-didaftarkan ke sistem.
-Alur Peminjaman dan Pengembalian
-Peminjaman
+<p>
+  <img src="https://img.shields.io/badge/ESP32-MicroPython-blue" />
+  <img src="https://img.shields.io/badge/Backend-Laravel-red" />
+  <img src="https://img.shields.io/badge/Database-MySQL-4479A1" />
+  <img src="https://img.shields.io/badge/Frontend-HTML%20%7C%20CSS%20%7C%20JS-orange" />
+</p>
+
+---
+
+Smart Lab merupakan sistem peminjaman dan pengelolaan kunci laboratorium yang mengintegrasikan teknologi RFID, ESP32, solenoid door lock, dan website untuk mempermudah proses peminjaman, pengembalian, serta monitoring penggunaan laboratorium.
+
+**Developed at SMKN 6 Malang**
+
+</div>
+
+---
+
+## About The Project
+
+Pengelolaan peminjaman kunci laboratorium secara manual memiliki beberapa kendala, seperti pencatatan yang tidak konsisten, kesulitan mengetahui pihak yang sedang memegang kunci, keterlambatan pengembalian, serta kurangnya informasi mengenai ketersediaan laboratorium.
+
+Smart Lab dikembangkan sebagai solusi berbasis Internet of Things (IoT) untuk mendigitalisasi proses peminjaman dan pengembalian kunci laboratorium.
+
+Melalui penggunaan kartu RFID, pengguna dapat melakukan autentikasi secara langsung pada loker yang telah dilengkapi sistem pengunci elektronik. Seluruh aktivitas peminjaman dan pengembalian dicatat dalam database dan dapat dipantau melalui website.
+
+## Project Objectives
+
+- Digitalisasi proses peminjaman dan pengembalian kunci laboratorium.
+- Mengidentifikasi pengguna menggunakan kartu RFID.
+- Mengontrol akses loker menggunakan solenoid door lock.
+- Memantau status penggunaan laboratorium melalui website.
+- Menyimpan riwayat transaksi secara terstruktur.
+- Mempermudah pengawasan oleh pengurus laboratorium.
+
+---
+
+## Main Features
+
+<table>
+  <tr>
+    <td width="50%">
+      <h3>RFID Authentication</h3>
+      Identifikasi siswa dan pengurus laboratorium menggunakan kartu RFID yang telah terdaftar.
+    </td>
+    <td width="50%">
+      <h3>Electronic Locker</h3>
+      Sistem penguncian dan pembukaan loker secara elektronik menggunakan solenoid door lock.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>Web Dashboard</h3>
+      Menampilkan informasi ketersediaan laboratorium dan pengguna yang sedang meminjam kunci.
+    </td>
+    <td width="50%">
+      <h3>Transaction History</h3>
+      Menyimpan dan menampilkan riwayat peminjaman serta pengembalian kunci.
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>Admin Management</h3>
+      Pengurus dapat mengelola data pengguna, laboratorium, dan transaksi.
+    </td>
+    <td width="50%">
+      <h3>Device Notification</h3>
+      Menggunakan LCD, buzzer, dan LED sebagai indikator proses pada perangkat.
+    </td>
+  </tr>
+</table>
+
+---
+
+## System Workflow
+
+### Borrowing Process
+
 1. Siswa mendatangi loker laboratorium yang ingin digunakan.
-2. Siswa menempelkan kartu RFID terdaftar pada reader di loker
-   tersebut.
-3. ESP32 membaca UID kartu dan mengirimkan data ke server melalui
-   jaringan Wi-Fi.
-4. Server memeriksa identitas pengguna, hak akses, dan status loker.
-5. Jika transaksi diizinkan, sistem mengaktifkan solenoid untuk
-   melepaskan pengunci loker.
-6. Siswa membuka loker secara manual dan mengambil kunci laboratorium.
-7. Sistem menyimpan transaksi peminjaman dan memperbarui status pada
-   website.
-Pengembalian
+2. Siswa menempelkan kartu RFID yang telah terdaftar pada RFID reader.
+3. ESP32 membaca UID kartu RFID.
+4. ESP32 mengirimkan data ke server melalui jaringan Wi-Fi.
+5. Server memvalidasi identitas pengguna dan status loker.
+6. Jika transaksi diizinkan, sistem mengaktifkan solenoid untuk membuka pengunci.
+7. Siswa membuka loker dan mengambil kunci laboratorium.
+8. Sistem menyimpan transaksi peminjaman dan memperbarui status pada website.
+
+### Returning Process
+
 1. Pengguna kembali ke loker tempat kunci dipinjam.
-2. Pengguna menempelkan kartu RFID yang sama pada reader.
-3. Sistem memeriksa transaksi aktif pengguna pada loker tersebut.
-4. Jika pengembalian valid, solenoid melepaskan pengunci agar loker
-   dapat dibuka.
-5. Pengguna memasukkan kembali kunci dan menutup loker secara manual.
-6. Sistem mencatat waktu pengembalian dan memperbarui status loker pada
-   website.
-Catatan: Solenoid berfungsi sebagai pengunci/pembuka kunci
-elektrik, bukan sebagai motor pembuka atau penutup pintu. Pintu loker
-tetap dibuka dan ditutup secara manual oleh pengguna.
+2. Pengguna melakukan pemindaian kartu RFID yang sama.
+3. Server memeriksa transaksi peminjaman yang masih aktif.
+4. Jika pengembalian valid, solenoid membuka pengunci.
+5. Pengguna memasukkan kembali kunci dan menutup loker.
+6. Sistem mencatat waktu pengembalian.
+7. Status loker diperbarui pada website.
 
-Peran Pengguna
-1. Siswa
-- Menggunakan kartu RFID yang telah terdaftar.
-- Melakukan peminjaman kunci melalui reader pada loker laboratorium.
-- Mengembalikan kunci pada loker tempat peminjaman.
+> **Note:** Solenoid berfungsi sebagai pengunci elektrik. Pintu loker tetap dibuka dan ditutup secara manual oleh pengguna.
+
+---
+
+## System Architecture
+
+Berikut merupakan gambaran arsitektur komunikasi antara perangkat keras, server, database, dan website Smart Lab.
+
+```mermaid
+flowchart TD
+    A["RFID Card"] --> B["RFID Reader"]
+    B --> C["ESP32 Controller"]
+
+    C --> D["Wi-Fi Network"]
+    D --> E["School Server"]
+
+    E --> F["Laravel Application"]
+    F --> G[("MySQL Database")]
+
+    G --> H["Smart Lab Website"]
+    H --> I["Admin Dashboard"]
+
+    C --> J["Relay Module"]
+    J --> K["Solenoid Door Lock"]
+```
+
+### Architecture Explanation
+
+| Layer | Component | Description |
+|---|---|---|
+| Input | RFID Card | Identitas pengguna |
+| Reader | MFRC522 | Membaca UID kartu |
+| Controller | ESP32 | Memproses data perangkat |
+| Network | Wi-Fi | Komunikasi dengan server |
+| Backend | Laravel | Validasi dan pengelolaan data |
+| Database | MySQL | Penyimpanan data transaksi |
+| Interface | Website | Monitoring dan administrasi |
+| Output | Relay and Solenoid | Kontrol pengunci loker |
+
+---
+
+## Hardware Components
+
+Komponen perangkat keras yang digunakan dalam pengembangan prototype Smart Lab.
+
+| No. | Component | Function |
+|:---:|---|---|
+| 1 | ESP32 | Mikrokontroler utama |
+| 2 | RFID MFRC522 | Membaca kartu RFID |
+| 3 | RFID Card | Identitas pengguna |
+| 4 | Solenoid Door Lock 12V | Pengunci elektrik |
+| 5 | Relay Module | Mengontrol solenoid |
+| 6 | LCD 16x2 I2C | Menampilkan informasi perangkat |
+| 7 | Buzzer | Memberikan notifikasi suara |
+| 8 | LED Indicator | Menampilkan indikator status |
+| 9 | Power Supply | Menyediakan sumber daya |
+| 10 | Microswitch | Mendeteksi posisi mekanis sesuai rancangan |
+
+### Prototype Specification
+
+| Specification | Description |
+|---|---|
+| Project Name | Smart Lab |
+| Number of Lockers | 2 Units |
+| Laboratory | LAB TKJ 1 and LAB TKJ 2 |
+| Student Users | 9 Students |
+| Laboratory Admins | 3 Admins |
+| Access Method | RFID Card |
+| Lock Mechanism | Electric Solenoid |
+| Server | School Server |
+| Platform | IoT and Web Application |
+
+---
+
+## Technology Stack
+
+Teknologi yang digunakan dalam pengembangan sistem Smart Lab.
+
+| Technology | Usage |
+|---|---|
+| ESP32 | Microcontroller |
+| MicroPython | Firmware Programming |
+| Thonny IDE | ESP32 Development |
+| PHP | Server-side Processing |
+| Laravel | Web Application Framework |
+| MySQL | Database Management |
+| HTML | Web Structure |
+| CSS | Web Styling |
+| JavaScript | Frontend Interaction |
+| REST API | Device and Server Communication |
+| Wi-Fi | Network Communication |
+
+---
+
+## User Roles
+
+Smart Lab memiliki dua jenis pengguna dengan hak akses yang berbeda.
+
+### 1. Student
+
+- Melakukan peminjaman kunci menggunakan kartu RFID.
+- Melakukan pengembalian kunci menggunakan kartu RFID yang sama.
 - Melihat informasi ketersediaan laboratorium melalui website.
-2. Pengurus Laboratorium (Admin)
-- Login ke halaman administrasi website.
-- Memantau status loker dan penggunaan kunci.
-- Melihat identitas peminjam serta waktu peminjaman dan pengembalian.
-- Mengelola data pengguna dan data laboratorium/loker.
-- Melihat dan mengelola riwayat transaksi.
-- Melakukan penanganan manual sesuai prosedur ketika terjadi keadaan
-  darurat.
-Prototype direncanakan menggunakan tiga akun/kartu pengurus laboratorium
-dan sembilan akun/kartu siswa.
-Perangkat Keras
-Komponen utama yang digunakan atau direncanakan dalam prototype:
-  Komponen                            Fungsi
-  ESP32                               Pengendali utama dan penghubung
-perangkat dengan server melalui
-Wi-Fi
 
-  RFID Reader MFRC522 (2 unit)        Membaca kartu RFID pada
-masing-masing loker
+### 2. Laboratory Admin
 
-  Kartu RFID                          Identitas siswa dan pengurus
-laboratorium
+- Login ke halaman administrasi.
+- Memantau status peminjaman dan pengembalian.
+- Melihat identitas pengguna yang sedang meminjam.
+- Mengelola data pengguna.
+- Mengelola data laboratorium dan loker.
+- Melihat riwayat transaksi.
+- Melakukan pengawasan terhadap aktivitas penggunaan laboratorium.
 
-  Solenoid Door Lock 12V (2 unit)     Mengunci dan melepaskan pengunci
-loker secara elektrik
+---
 
-  Modul relay                         Mengendalikan suplai daya ke
-solenoid
+## Database Overview
 
-  Sensor pintu magnetik               Membaca kondisi pintu loker terbuka
-atau tertutup
+Secara konseptual, database Smart Lab mengelola beberapa kelompok data berikut.
 
-  Microswitch                         Mendeteksi kondisi/posisi komponen
-mekanis yang ditentukan pada
-rancangan
+| Data | Description |
+|---|---|
+| Users | Menyimpan informasi pengguna dan UID RFID |
+| Laboratories | Menyimpan data laboratorium |
+| Lockers | Menyimpan data dan status setiap loker |
+| Transactions | Menyimpan aktivitas peminjaman dan pengembalian |
+| Admins | Menyimpan akun administrator |
 
-  LCD 16x2 I2C                        Menampilkan informasi proses pada
-perangkat
+Struktur tabel dan relasi database dapat disesuaikan dengan implementasi aplikasi.
 
-  Buzzer                              Memberikan notifikasi suara
+---
 
-  LED indikator                       Menampilkan indikator status proses
-Catu daya                           Menyediakan tegangan sesuai
-kebutuhan rangkaian
-Jumlah dan spesifikasi komponen dapat disesuaikan dengan hasil perakitan
-serta pengujian prototype.
-Teknologi yang Digunakan
-  Teknologi               Kegunaan
-  MicroPython             Pemrograman ESP32
-Thonny IDE              Menulis dan mengunggah program MicroPython ke ESP32
-PHP                     Pemrosesan data pada sisi server/API
-Laravel                 Pengembangan website dan pengelolaan aplikasi
-MySQL                   Penyimpanan data pengguna, loker, dan transaksi
-HTML, CSS, JavaScript   Antarmuka website
-Wi-Fi                   Komunikasi ESP32 dengan server
-HTTP/REST API           Pertukaran data antara ESP32 dan server
+## Project Structure
 
-Catatan implementasi: program ESP32 direncanakan menggunakan
-MicroPython melalui Thonny, sedangkan aplikasi website menggunakan
-Laravel dan basis data MySQL. Detail endpoint API dan struktur tabel
-mengikuti implementasi kode yang digunakan pada tahap pengembangan.
-Gambaran Arsitektur
-Secara umum, aliran komunikasi Smart Lab adalah:
-Kartu RFID Pengguna
-        |
-        v
-RFID Reader pada Loker
-        |
-        v
-      ESP32
-        |
-        | Wi-Fi
-        v
- Router / Access Point
-        |
-        v
- Server Sekolah
-        |
-        +------ Aplikasi Laravel / API
-        |
-        +------ Database MySQL
-        |
-        v
- Website Smart Lab
-        |
-        +------ Halaman Informasi
-        |
-        +------ Dashboard Admin
-ESP32 membaca kartu dari reader pada loker, kemudian mengirimkan
-informasi yang diperlukan ke server. Server memvalidasi transaksi dan
-menyimpan hasilnya ke MySQL. Website mengambil data dari server untuk
-menampilkan informasi penggunaan dan riwayat.
+Gambaran umum pemisahan komponen proyek:
 
-Server direncanakan memanfaatkan server milik sekolah, sedangkan koneksi
-perangkat menggunakan jaringan Wi-Fi sekolah. Konfigurasi jaringan akhir
-mengikuti kebijakan dan fasilitas jaringan sekolah.
-Data yang Dikelola
-Secara konseptual, sistem membutuhkan data berikut:
-- Data pengguna: identitas pengguna, jenis/peran pengguna, dan UID
-  kartu RFID.
-- Data loker/laboratorium: nama laboratorium, identitas loker, dan
-  status penggunaan.
-- Data transaksi: pengguna, loker, waktu peminjaman, waktu
-  pengembalian, dan status transaksi.
-- Data administrator: akun untuk mengakses halaman pengelolaan
-  website.
-UID kartu digunakan sebagai identitas RFID. Data pribadi yang
-ditampilkan pada website sebaiknya dibatasi sesuai kebutuhan pemantauan
-dan hak akses pengguna.
-Keamanan dan Penanganan Darurat
-- Hanya kartu RFID yang telah terdaftar dan memenuhi aturan sistem
-  yang dapat melakukan transaksi.
-- Sistem harus memeriksa status transaksi agar satu loker tidak
-  dipinjam secara bersamaan oleh pengguna yang berbeda.
-- Halaman administrasi dilindungi dengan autentikasi admin.
-- Solenoid dan rangkaian kontrol harus menggunakan catu daya sesuai
-  spesifikasi komponen.
-- Pengurus laboratorium perlu memiliki prosedur pembukaan manual
-  apabila terjadi gangguan listrik atau kerusakan sistem.
-- Mekanisme pembukaan darurat harus dapat diakses oleh petugas yang
-  berwenang dan tidak menghilangkan fungsi pengamanan dalam penggunaan
-  normal.
-Rencana Pengembangan
-Pengembangan selanjutnya dapat mencakup:
-1. Penyempurnaan validasi transaksi peminjaman dan pengembalian.
-2. Penambahan notifikasi apabila kunci belum dikembalikan melewati
-   batas waktu.
-3. Penyempurnaan laporan dan ekspor riwayat transaksi.
-4. Pengujian kestabilan komunikasi ESP32 dengan server.
-5. Pengujian sensor pintu, relay, dan solenoid dalam berbagai kondisi.
-6. Pengembangan sistem dari dua loker prototype ke lebih banyak
-   laboratorium.
-Catatan Prototype
-Smart Lab pada tahap ini merupakan prototype dengan dua loker, yaitu
-LAB TKJ 1 dan LAB TKJ 2. Sistem menggunakan kartu RFID untuk siswa
-maupun pengurus laboratorium. Pengguna melakukan pemindaian langsung
-pada reader di loker yang dituju; pemilihan laboratorium tidak dilakukan
-melalui website.
+```text
+smart-lab/
+|
+|-- firmware/
+|   |-- main.py
+|   |-- rfid.py
+|   |-- wifi.py
+|   |-- api.py
+|   |-- locker.py
+|   |-- display.py
+|   |
+|   `-- README.md
+|
+|-- website/
+|   |-- app/
+|   |-- bootstrap/
+|   |-- config/
+|   |-- database/
+|   |-- public/
+|   |-- resources/
+|   |-- routes/
+|   |-- storage/
+|   |-- tests/
+|   `-- README.md
+|
+|-- documentation/
+|   |-- architecture/
+|   |-- diagrams/
+|   |-- hardware/
+|   `-- images/
+|
+`-- README.md
+```
 
-Fungsi utama prototype adalah mendemonstrasikan identifikasi pengguna,
-proses peminjaman dan pengembalian, kontrol pengunci elektrik,
-pengiriman data ke server, serta pemantauan melalui website.
-Implementasi akhir dapat mengalami penyesuaian berdasarkan hasil
-pengujian dan kebutuhan sekolah.
-Nama Proyek: Smart Lab
-Jenis Proyek: Prototype IoT dan Website
-Bidang: Sistem Peminjaman Kunci Laboratorium
-Lingkungan Implementasi: Laboratorium TKJ
+> Struktur di atas merupakan contoh pengorganisasian proyek. Nama folder dan file dapat disesuaikan dengan struktur implementasi sebenarnya.
+
+---
+
+## Security and Emergency Handling
+
+Beberapa aspek keamanan yang diperhatikan dalam pengembangan Smart Lab:
+
+- Hanya kartu RFID terdaftar yang dapat melakukan transaksi.
+- Sistem memeriksa transaksi aktif untuk mencegah peminjaman ganda pada loker yang sama.
+- Halaman administrasi dilindungi autentikasi.
+- Komponen solenoid menggunakan sumber daya sesuai spesifikasinya.
+- Pengurus laboratorium memiliki prosedur pembukaan manual ketika terjadi gangguan listrik atau kerusakan sistem.
+- Mekanisme pembukaan darurat hanya digunakan oleh petugas yang berwenang.
+
+---
+
+## Future Development
+
+Rencana pengembangan Smart Lab selanjutnya meliputi:
+
+- Pengembangan prototype menjadi sistem dengan lebih banyak loker.
+- Penambahan notifikasi keterlambatan pengembalian.
+- Pengembangan fitur laporan dan ekspor riwayat transaksi.
+- Peningkatan keamanan komunikasi perangkat dengan server.
+- Penyempurnaan sistem monitoring kondisi pintu loker.
+- Pengujian kestabilan perangkat keras dan perangkat lunak.
+
+---
+
+## Project Information
+
+<div align="center">
+
+| Information | Details |
+|---|---|
+| Project Name | Smart Lab |
+| Project Category | Internet of Things |
+| Project Type | Hardware and Web Application |
+| Development Environment | SMKN 6 Malang |
+| Program | Sistem Informasi, Jaringan, dan Aplikasi |
+| Academic Year | 2026/2027 |
+| Prototype | 2 Laboratory Lockers |
+
+---
+
+**SMART LAB**
+
+*Smart Technology for Better Laboratory Management.*
+
+SMKN 6 Malang
+
+</div>
